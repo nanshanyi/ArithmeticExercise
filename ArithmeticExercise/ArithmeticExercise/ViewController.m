@@ -17,6 +17,37 @@ void swap(NSMutableArray *array, NSInteger i, NSInteger j){
     array[i] = array[j];
     array[j] = temp;
 }
+//二叉树
+typedef struct BitNode{
+    int data;
+    struct BitNode *lchild;
+    struct BitNode *rchild;
+}BitNode, BiTree;
+//栈
+#define SIZE 100
+typedef struct SQStack{
+    BiTree *data[SIZE];
+    int stackSize;
+    int top;
+}sqstack;
+
+void push(sqstack *s, BiTree *t){
+    if (s->top == SIZE) {
+        printf("the stack is full");
+    }else{
+        s->top++;
+        
+    }
+}
+BitNode * pop(sqstack *s){
+    
+    if(s->top == -1){
+        return NULL;
+    }else{
+        s->top--;
+        return s->data[s->top+1];
+    }
+}
 
 @implementation ViewController
 
@@ -37,6 +68,63 @@ void swap(NSMutableArray *array, NSInteger i, NSInteger j){
     NSMutableArray *insertArray = [NSMutableArray arrayWithArray:@[@7,@5,@1,@6,@8,@10,@4,@3,@9,@11,@2]];
     //插入排序
     [self insertSortArray:insertArray];
+    //二叉树遍历
+
+    [self traverseTree:[self initBitTree]];
+}
+- (BiTree *)initBitTree{
+    BiTree *Head = [self initBitNodeWithData:1];
+    Head->data = 1;
+    [self creatBitNodeWith:Head left:2 right:3];
+    [self creatBitNodeWith:Head->lchild left:4 right:5];
+    [self creatBitNodeWith:Head->rchild left:6 right:7];
+    [self creatBitNodeWith:Head->lchild->lchild left:8 right:9];
+    [self creatBitNodeWith:Head->lchild->rchild left:10 right:11];
+    [self creatBitNodeWith:Head->rchild->lchild left:12 right:13];
+    [self creatBitNodeWith:Head->rchild->rchild left:14 right:15];
+    return Head;
+}
+- (BitNode *)initBitNodeWithData:(int)data{
+    BitNode *node = (BitNode *)malloc(sizeof(BitNode));
+    node->data = data;
+    node->lchild = NULL;
+    node->rchild = NULL;
+    return node;
+}
+//递归遍历二叉树
+- (void)traverseTree:(BitNode *)binTree{
+    if (binTree != NULL) {
+        [self traverseTree:binTree->lchild];
+        [self traverseTree:binTree->rchild];
+        printf("++++++++++%d\n", binTree->data);
+    }
+}
+//非递归遍历二叉树
+- (void)traverseBitTree:(BitNode *)binTree{
+    sqstack *s = NULL;
+    s->top = -1;
+    BitNode *p = binTree;
+    if (!binTree) {
+        printf("empty tree");
+    }else{
+        while (p || s->top != -1) {
+            if (p) {
+                push(s, p);
+                p = p->lchild;
+            }else{
+                p = pop(s);
+                printf("%d",p->data);
+                p = p->rchild;
+            }
+        }
+    }
+}
+- (void)creatBitNodeWith:(BitNode *)node left:(int)l right:(int)r{
+
+    BitNode *L = [self initBitNodeWithData:l];
+    BitNode *R = [self initBitNodeWithData:r];
+    node->lchild = L;
+    node->rchild = R;
 }
 - (void)insertSortArray:(NSMutableArray *)array{
     if (array.count <= 1) return;

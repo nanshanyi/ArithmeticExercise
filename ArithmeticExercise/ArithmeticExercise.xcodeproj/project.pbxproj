@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FB0A281E20EF870800853E43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0A281D20EF870800853E43 /* AppDelegate.m */; };
-		FB0A282120EF870800853E43 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0A282020EF870800853E43 /* ViewController.m */; };
 		FB0A282420EF870800853E43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0A282220EF870800853E43 /* Main.storyboard */; };
 		FB0A282620EF870A00853E43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0A282520EF870A00853E43 /* Assets.xcassets */; };
 		FB0A282920EF870A00853E43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0A282720EF870A00853E43 /* LaunchScreen.storyboard */; };
 		FB0A282C20EF870A00853E43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0A282B20EF870A00853E43 /* main.m */; };
+		FB4BD4042108B85300E56DFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0A282020EF870800853E43 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB0A282120EF870800853E43 /* ViewController.m in Sources */,
+				FB4BD4042108B85300E56DFE /* ViewController.m in Sources */,
 				FB0A282C20EF870A00853E43 /* main.m in Sources */,
 				FB0A281E20EF870800853E43 /* AppDelegate.m in Sources */,
 			);
